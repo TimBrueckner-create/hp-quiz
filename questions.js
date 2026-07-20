@@ -1,212 +1,125 @@
 window.QUIZ_QUESTIONS = [
-  {
-    category: "Figuren",
-    difficulty: "leicht",
-    question: "Wie heisst Harrys Eule?",
-    answers: ["Hedwig", "Errol", "Fawkes", "Pigwidgeon"],
-    correct: 0
-  },
-  {
-    category: "Figuren",
-    difficulty: "leicht",
-    question: "Wer ist Harrys bester Freund aus der Familie Weasley?",
-    answers: ["Percy", "Ron", "Fred", "Charlie"],
-    correct: 1
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "leicht",
-    question: "In welchem Haus ist Harry Potter?",
-    answers: ["Ravenclaw", "Hufflepuff", "Gryffindor", "Slytherin"],
-    correct: 2
-  },
-  {
-    category: "Zaubersprueche",
-    difficulty: "leicht",
-    question: "Welcher Zauberspruch oeffnet Tueren?",
-    answers: ["Alohomora", "Lumos", "Nox", "Accio"],
-    correct: 0
-  },
-  {
-    category: "Orte",
-    difficulty: "leicht",
-    question: "Wie heisst die magische Einkaufsstrasse in London?",
-    answers: ["Ligusterweg", "Winkelgasse", "Spinner's End", "Godric's Hollow"],
-    correct: 1
-  },
-  {
-    category: "Objekte",
-    difficulty: "leicht",
-    question: "Welches Spiel wird auf Besen gespielt?",
-    answers: ["Zauberschach", "Quidditch", "Gobstones", "Exploding Snap"],
-    correct: 1
-  },
-  {
-    category: "Figuren",
-    difficulty: "mittel",
-    question: "Wie heisst Hermines Katze?",
-    answers: ["Mrs Norris", "Krummbein", "Trevor", "Arnold"],
-    correct: 1
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "mittel",
-    question: "Wer unterrichtet im ersten Schuljahr Zaubertraenke?",
-    answers: ["Severus Snape", "Remus Lupin", "Filius Flitwick", "Pomona Sprout"],
-    correct: 0
-  },
-  {
-    category: "Objekte",
-    difficulty: "mittel",
-    question: "Was zeigt der Spiegel Nerhegeb?",
-    answers: ["Die Zukunft", "Den groessten Wunsch", "Den wahren Namen", "Versteckte Raeume"],
-    correct: 1
-  },
-  {
-    category: "Zaubersprueche",
-    difficulty: "mittel",
-    question: "Welcher Spruch ruft Gegenstaende herbei?",
-    answers: ["Accio", "Expelliarmus", "Stupefy", "Reparo"],
-    correct: 0
-  },
-  {
-    category: "Figuren",
-    difficulty: "mittel",
-    question: "Welcher Animagus verwandelt sich in einen schwarzen Hund?",
-    answers: ["James Potter", "Peter Pettigrew", "Sirius Black", "Minerva McGonagall"],
-    correct: 2
-  },
-  {
-    category: "Orte",
-    difficulty: "mittel",
-    question: "In welchem Dorf liegt der Pub Drei Besen?",
-    answers: ["Hogsmeade", "Ottery St Catchpole", "Little Hangleton", "Tinworth"],
-    correct: 0
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "mittel",
-    question: "Welche Pflanze schreit beim Umtopfen?",
-    answers: ["Teufelsschlinge", "Mandragora", "Mimbulus Mimbletonia", "Flussgras"],
-    correct: 1
-  },
-  {
-    category: "Objekte",
-    difficulty: "mittel",
-    question: "Womit wird der Eingang zur Kammer des Schreckens geoeffnet?",
-    answers: ["Parseltongue", "Ein Portschluessel", "Ein Zauberstabkern", "Flohpulver"],
-    correct: 0
-  },
-  {
-    category: "Figuren",
-    difficulty: "schwer",
-    question: "Wie heisst Rons Ratte wirklich?",
-    answers: ["Barty Crouch", "Peter Pettigrew", "Igor Karkaroff", "Stan Shunpike"],
-    correct: 1
-  },
-  {
-    category: "Orte",
-    difficulty: "schwer",
-    question: "Wo versteckt sich die Karte des Rumtreibers am Anfang bei Harry?",
-    answers: ["Im Koffer", "Unter dem Bett", "Im Buch", "Bei Fred und George"],
-    correct: 3
-  },
-  {
-    category: "Zaubersprueche",
-    difficulty: "schwer",
-    question: "Welcher Zauber erzeugt einen Patronus?",
-    answers: ["Expecto Patronum", "Protego Maxima", "Finite Incantatem", "Riddikulus"],
-    correct: 0
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "schwer",
-    question: "Wer ist Hauslehrer von Ravenclaw?",
-    answers: ["Filius Flitwick", "Sybill Trelawney", "Cuthbert Binns", "Horace Slughorn"],
-    correct: 0
-  },
-  {
-    category: "Objekte",
-    difficulty: "schwer",
-    question: "Welcher Kern steckt in Harrys Zauberstab?",
-    answers: ["Drachenherzfaser", "Einhornhaar", "Phonixfeder", "Thestralschweifhaar"],
-    correct: 2
-  },
-  {
-    category: "Figuren",
-    difficulty: "schwer",
-    question: "Wer gibt Harry im ersten Jahr den Tarnumhang?",
-    answers: ["Dumbledore", "Sirius Black", "Hagrid", "Remus Lupin"],
-    correct: 0
-  },
-  {
-    category: "Orte",
-    difficulty: "mittel",
-    question: "Wie heisst das Haus der Familie Black in London?",
-    answers: ["Grimmauldplatz 12", "Ligusterweg 4", "Spinner's End", "Fuchsbau"],
-    correct: 0
-  },
-  {
-    category: "Figuren",
-    difficulty: "leicht",
-    question: "Wer ist der Schulleiter von Hogwarts zu Harrys Schulbeginn?",
-    answers: ["Albus Dumbledore", "Cornelius Fudge", "Gilderoy Lockhart", "Argus Filch"],
-    correct: 0
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "leicht",
-    question: "Welches Fach unterrichtet Professor Flitwick?",
-    answers: ["Verwandlung", "Kraeuterkunde", "Zauberkunst", "Astronomie"],
-    correct: 2
-  },
-  {
-    category: "Objekte",
-    difficulty: "mittel",
-    question: "Wie nennt man eine Zeitung mit bewegten Bildern?",
-    answers: ["Tagesprophet", "Klitterer", "Hexenwoche", "Magisches Register"],
-    correct: 0
-  },
-  {
-    category: "Zaubersprueche",
-    difficulty: "mittel",
-    question: "Welcher Spruch repariert Gegenstaende?",
-    answers: ["Reparo", "Reducio", "Diffindo", "Obliviate"],
-    correct: 0
-  },
-  {
-    category: "Figuren",
-    difficulty: "mittel",
-    question: "Wie heisst Nevilles Kroete?",
-    answers: ["Trevor", "Scabbers", "Arnold", "Crookshanks"],
-    correct: 0
-  },
-  {
-    category: "Orte",
-    difficulty: "leicht",
-    question: "Wie heisst das Zuhause der Weasleys?",
-    answers: ["Der Fuchsbau", "Malfoy Manor", "Shell Cottage", "Nurmengard"],
-    correct: 0
-  },
-  {
-    category: "Hogwarts",
-    difficulty: "schwer",
-    question: "Welche Position spielt Harry im Quidditch-Team?",
-    answers: ["Jaeger", "Sucher", "Treiber", "Hueter"],
-    correct: 1
-  },
-  {
-    category: "Objekte",
-    difficulty: "schwer",
-    question: "Was ist ein Horkrux?",
-    answers: ["Ein Schutzzauber", "Ein Seelenteil in einem Objekt", "Ein magisches Tier", "Ein Zaubertrank"],
-    correct: 1
-  },
-  {
-    category: "Figuren",
-    difficulty: "schwer",
-    question: "Wer ist der Halbblutprinz?",
-    answers: ["Severus Snape", "Tom Riddle", "Draco Malfoy", "Regulus Black"],
-    correct: 0
-  }
+  {category:"Figuren",difficulty:"leicht",question:"Wie heisst Harrys Eule?",answers:["Hedwig","Errol","Fawkes","Pigwidgeon"],correct:0},
+  {category:"Figuren",difficulty:"leicht",question:"Wer ist Harrys bester Freund aus der Familie Weasley?",answers:["Percy","Ron","Fred","Charlie"],correct:1},
+  {category:"Hogwarts",difficulty:"leicht",question:"In welchem Haus ist Harry Potter?",answers:["Ravenclaw","Hufflepuff","Gryffindor","Slytherin"],correct:2},
+  {category:"Zaubersprueche",difficulty:"leicht",question:"Welcher Zauberspruch oeffnet Tueren?",answers:["Alohomora","Lumos","Nox","Accio"],correct:0},
+  {category:"Orte",difficulty:"leicht",question:"Wie heisst die magische Einkaufsstrasse in London?",answers:["Ligusterweg","Winkelgasse","Spinner's End","Godric's Hollow"],correct:1},
+  {category:"Objekte",difficulty:"leicht",question:"Welches Spiel wird auf Besen gespielt?",answers:["Zauberschach","Quidditch","Gobstones","Exploding Snap"],correct:1},
+  {category:"Figuren",difficulty:"mittel",question:"Wie heisst Hermines Katze?",answers:["Mrs Norris","Krummbein","Trevor","Arnold"],correct:1},
+  {category:"Hogwarts",difficulty:"mittel",question:"Wer unterrichtet im ersten Schuljahr Zaubertraenke?",answers:["Severus Snape","Remus Lupin","Filius Flitwick","Pomona Sprout"],correct:0},
+  {category:"Objekte",difficulty:"mittel",question:"Was zeigt der Spiegel Nerhegeb?",answers:["Die Zukunft","Den groessten Wunsch","Den wahren Namen","Versteckte Raeume"],correct:1},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch ruft Gegenstaende herbei?",answers:["Accio","Expelliarmus","Stupefy","Reparo"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Welcher Animagus verwandelt sich in einen schwarzen Hund?",answers:["James Potter","Peter Pettigrew","Sirius Black","Minerva McGonagall"],correct:2},
+  {category:"Orte",difficulty:"mittel",question:"In welchem Dorf liegt der Pub Drei Besen?",answers:["Hogsmeade","Ottery St Catchpole","Little Hangleton","Tinworth"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Welche Pflanze schreit beim Umtopfen?",answers:["Teufelsschlinge","Mandragora","Mimbulus Mimbletonia","Flussgras"],correct:1},
+  {category:"Objekte",difficulty:"mittel",question:"Womit wird der Eingang zur Kammer des Schreckens geoeffnet?",answers:["Parseltongue","Ein Portschluessel","Ein Zauberstabkern","Flohpulver"],correct:0},
+  {category:"Figuren",difficulty:"schwer",question:"Wie heisst Rons Ratte wirklich?",answers:["Barty Crouch","Peter Pettigrew","Igor Karkaroff","Stan Shunpike"],correct:1},
+  {category:"Orte",difficulty:"schwer",question:"Woher bekommen Harry, Ron und Hermine viele Schulbuecher?",answers:["Flourish and Blotts","Honeydukes","Gringotts","Eeylops"],correct:0},
+  {category:"Zaubersprueche",difficulty:"schwer",question:"Welcher Zauber erzeugt einen Patronus?",answers:["Expecto Patronum","Protego Maxima","Finite Incantatem","Riddikulus"],correct:0},
+  {category:"Hogwarts",difficulty:"schwer",question:"Wer ist Hauslehrer von Ravenclaw?",answers:["Filius Flitwick","Sybill Trelawney","Cuthbert Binns","Horace Slughorn"],correct:0},
+  {category:"Objekte",difficulty:"schwer",question:"Welcher Kern steckt in Harrys Zauberstab?",answers:["Drachenherzfaser","Einhornhaar","Phonixfeder","Thestralschweifhaar"],correct:2},
+  {category:"Figuren",difficulty:"schwer",question:"Wer gibt Harry im ersten Jahr den Tarnumhang?",answers:["Dumbledore","Sirius Black","Hagrid","Remus Lupin"],correct:0},
+  {category:"Orte",difficulty:"mittel",question:"Wie heisst das Haus der Familie Black in London?",answers:["Grimmauldplatz 12","Ligusterweg 4","Spinner's End","Fuchsbau"],correct:0},
+  {category:"Figuren",difficulty:"leicht",question:"Wer ist der Schulleiter von Hogwarts zu Harrys Schulbeginn?",answers:["Albus Dumbledore","Cornelius Fudge","Gilderoy Lockhart","Argus Filch"],correct:0},
+  {category:"Hogwarts",difficulty:"leicht",question:"Welches Fach unterrichtet Professor Flitwick?",answers:["Verwandlung","Kraeuterkunde","Zauberkunst","Astronomie"],correct:2},
+  {category:"Objekte",difficulty:"mittel",question:"Wie heisst die Zeitung der Zaubererwelt?",answers:["Tagesprophet","Klitterer","Hexenwoche","Magisches Register"],correct:0},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch repariert Gegenstaende?",answers:["Reparo","Reducio","Diffindo","Obliviate"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Wie heisst Nevilles Kroete?",answers:["Trevor","Scabbers","Arnold","Crookshanks"],correct:0},
+  {category:"Orte",difficulty:"leicht",question:"Wie heisst das Zuhause der Weasleys?",answers:["Der Fuchsbau","Malfoy Manor","Shell Cottage","Nurmengard"],correct:0},
+  {category:"Hogwarts",difficulty:"schwer",question:"Welche Position spielt Harry im Quidditch-Team?",answers:["Jaeger","Sucher","Treiber","Hueter"],correct:1},
+  {category:"Objekte",difficulty:"schwer",question:"Was ist ein Horkrux?",answers:["Ein Schutzzauber","Ein Seelenteil in einem Objekt","Ein magisches Tier","Ein Zaubertrank"],correct:1},
+  {category:"Figuren",difficulty:"schwer",question:"Wer ist der Halbblutprinz?",answers:["Severus Snape","Tom Riddle","Draco Malfoy","Regulus Black"],correct:0},
+  {category:"Figuren",difficulty:"leicht",question:"Wie heisst Harrys Patentante?",answers:["Petunia","Marge","Molly","Minerva"],correct:0},
+  {category:"Figuren",difficulty:"leicht",question:"Wie heisst Harrys Cousin?",answers:["Dudley","Dean","Dennis","Dobby"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Wer ist Rons juengere Schwester?",answers:["Ginny","Fleur","Angelina","Katie"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Wer leitet die Schuelerzeitung Der Klitterer?",answers:["Xenophilius Lovegood","Rita Kimmkorn","Arthur Weasley","Amos Diggory"],correct:0},
+  {category:"Figuren",difficulty:"schwer",question:"Wie heisst der Bruder von Sirius Black?",answers:["Regulus","Rabastan","Rufus","Rodolphus"],correct:0},
+  {category:"Figuren",difficulty:"schwer",question:"Wer ist die Mutter von Draco Malfoy?",answers:["Narzissa","Bellatrix","Andromeda","Alecto"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Wer ist der Wildhueter von Hogwarts?",answers:["Hagrid","Filch","Bane","Firenze"],correct:0},
+  {category:"Figuren",difficulty:"leicht",question:"Wie heisst der Hauself der Familie Malfoy?",answers:["Dobby","Kreacher","Winky","Hokey"],correct:0},
+  {category:"Figuren",difficulty:"mittel",question:"Welcher Lehrer ist ein Werwolf?",answers:["Remus Lupin","Severus Snape","Quirinus Quirrell","Gilderoy Lockhart"],correct:0},
+  {category:"Figuren",difficulty:"schwer",question:"Wer gibt sich im vierten Jahr als Moody aus?",answers:["Barty Crouch Jr.","Lucius Malfoy","Peter Pettigrew","Igor Karkaroff"],correct:0},
+  {category:"Hogwarts",difficulty:"leicht",question:"Welches Haus ist fuer Schlauheit und Ehrgeiz bekannt?",answers:["Slytherin","Hufflepuff","Gryffindor","Ravenclaw"],correct:0},
+  {category:"Hogwarts",difficulty:"leicht",question:"Welches Haus ist fuer Fleiss und Loyalitaet bekannt?",answers:["Hufflepuff","Ravenclaw","Slytherin","Gryffindor"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Welcher Geist gehoert zu Gryffindor?",answers:["Fast Kopfloser Nick","Graue Dame","Blutiger Baron","Fetter Moench"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Welcher Geist gehoert zu Ravenclaw?",answers:["Graue Dame","Fast Kopfloser Nick","Peeves","Fetter Moench"],correct:0},
+  {category:"Hogwarts",difficulty:"schwer",question:"Wie heisst der Poltergeist von Hogwarts?",answers:["Peeves","Binns","Firenze","Griphook"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Wer verwaltet die Bibliothek von Hogwarts?",answers:["Madam Pince","Madam Pomfrey","Professor Sinistra","Professor Vector"],correct:0},
+  {category:"Hogwarts",difficulty:"leicht",question:"Wer kuemmert sich um verletzte Schueler?",answers:["Madam Pomfrey","Madam Hooch","Madam Malkin","Madam Rosmerta"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Welches Fach unterrichtet Professor Sprout?",answers:["Kraeuterkunde","Zauberkunst","Astronomie","Arithmantik"],correct:0},
+  {category:"Hogwarts",difficulty:"mittel",question:"Welches Fach unterrichtet Professor Trelawney?",answers:["Wahrsagen","Verteidigung","Alte Runen","Zaubertraenke"],correct:0},
+  {category:"Hogwarts",difficulty:"schwer",question:"Welches magische Artefakt teilt Schueler in Haeuser ein?",answers:["Sprechender Hut","Feuerkelch","Denkarium","Stein der Weisen"],correct:0},
+  {category:"Zaubersprueche",difficulty:"leicht",question:"Welcher Spruch macht Licht?",answers:["Lumos","Nox","Aguamenti","Wingardium Leviosa"],correct:0},
+  {category:"Zaubersprueche",difficulty:"leicht",question:"Welcher Spruch loescht Licht?",answers:["Nox","Lumos","Incendio","Accio"],correct:0},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch entwaffnet Gegner?",answers:["Expelliarmus","Stupefy","Protego","Petrificus Totalus"],correct:0},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch betaeubt?",answers:["Stupefy","Riddikulus","Reparo","Alohomora"],correct:0},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch schuetzt wie ein Schild?",answers:["Protego","Accio","Diffindo","Obliviate"],correct:0},
+  {category:"Zaubersprueche",difficulty:"schwer",question:"Welcher Spruch vertreibt einen Irrwicht?",answers:["Riddikulus","Expecto Patronum","Imperio","Confundo"],correct:0},
+  {category:"Zaubersprueche",difficulty:"schwer",question:"Welcher Spruch laesst Wasser erscheinen?",answers:["Aguamenti","Incendio","Glacius","Lumos"],correct:0},
+  {category:"Zaubersprueche",difficulty:"schwer",question:"Welcher Spruch veraendert Erinnerungen?",answers:["Obliviate","Reparo","Levioso","Sectumsempra"],correct:0},
+  {category:"Zaubersprueche",difficulty:"mittel",question:"Welcher Spruch laesst Dinge schweben?",answers:["Wingardium Leviosa","Accio","Nox","Protego"],correct:0},
+  {category:"Zaubersprueche",difficulty:"schwer",question:"Welcher Spruch schneidet etwas?",answers:["Diffindo","Stupefy","Alohomora","Finite"],correct:0},
+  {category:"Orte",difficulty:"leicht",question:"Wo wohnen Harrys Verwandte?",answers:["Ligusterweg 4","Grimmauldplatz 12","Spinner's End","Fuchsbau"],correct:0},
+  {category:"Orte",difficulty:"leicht",question:"Welche Bank gibt es in der Winkelgasse?",answers:["Gringotts","Honeydukes","Ollivanders","Borgin und Burkes"],correct:0},
+  {category:"Orte",difficulty:"mittel",question:"Wo kaufen Schueler Zauberstaebe?",answers:["Ollivanders","Madam Malkin","Eeylops","Flourish and Blotts"],correct:0},
+  {category:"Orte",difficulty:"mittel",question:"Wie heisst der Laden fuer Suessigkeiten in Hogsmeade?",answers:["Honeydukes","Zonko","Drei Besen","Eberkopf"],correct:0},
+  {category:"Orte",difficulty:"schwer",question:"Wie heisst das Dorf, in dem Harrys Eltern lebten?",answers:["Godric's Hollow","Hogsmeade","Little Hangleton","Ottery St Catchpole"],correct:0},
+  {category:"Orte",difficulty:"schwer",question:"Wo steht das Haus der Malfoys?",answers:["Malfoy Manor","Shell Cottage","Nurmengard","Spinner's End"],correct:0},
+  {category:"Orte",difficulty:"mittel",question:"Wie heisst der verbotene Wald bei Hogwarts?",answers:["Verbotener Wald","Dunkler Wald","Nordwald","Schwarzwald"],correct:0},
+  {category:"Orte",difficulty:"mittel",question:"Welcher Pub fuehrt zur Winkelgasse?",answers:["Tropfender Kessel","Drei Besen","Eberkopf","Schweinskopf"],correct:0},
+  {category:"Orte",difficulty:"schwer",question:"Wo lebt Bill Weasley spaeter mit Fleur?",answers:["Shell Cottage","Fuchsbau","Grimmauldplatz 12","Hogsmeade"],correct:0},
+  {category:"Orte",difficulty:"schwer",question:"Welche Zaubererstrasse ist fuer dunkle Laeden bekannt?",answers:["Nocturngasse","Winkelgasse","Charing Cross Road","Horizontallee"],correct:0},
+  {category:"Objekte",difficulty:"leicht",question:"Was bringt Harry zu Beginn nach Hogwarts?",answers:["Brief","Denkarium","Feuerkelch","Zeitumkehrer"],correct:0},
+  {category:"Objekte",difficulty:"leicht",question:"Was macht ein Tarnumhang?",answers:["Unsichtbar machen","Fliegen lassen","Zeit drehen","Erinnerungen zeigen"],correct:0},
+  {category:"Objekte",difficulty:"mittel",question:"Welches Objekt waehlt Champions im vierten Jahr?",answers:["Feuerkelch","Sprechender Hut","Denkarium","Erinnermich"],correct:0},
+  {category:"Objekte",difficulty:"mittel",question:"Womit reist man durch Kamine?",answers:["Flohpulver","Portschluessel","Besenwachs","Drachenblut"],correct:0},
+  {category:"Objekte",difficulty:"schwer",question:"Was bewahrt Dumbledore Erinnerungen auf?",answers:["Denkarium","Deluminator","Feuerkelch","Erinnermich"],correct:0},
+  {category:"Objekte",difficulty:"schwer",question:"Welches Objekt hilft Hermione beim Stundenplan?",answers:["Zeitumkehrer","Marauderkarte","Tarnumhang","Deluminator"],correct:0},
+  {category:"Objekte",difficulty:"mittel",question:"Was zeigt die Karte des Rumtreibers?",answers:["Menschen in Hogwarts","Zukunft","Hauspunkte","Zauberstabkerne"],correct:0},
+  {category:"Objekte",difficulty:"mittel",question:"Welcher Stein soll Leben verlaengern und Metall verwandeln?",answers:["Stein der Weisen","Auferstehungsstein","Mondstein","Bezoar"],correct:0},
+  {category:"Objekte",difficulty:"schwer",question:"Welches Objekt kann Lichter einfangen?",answers:["Deluminator","Erinnermich","Denkarium","Portschluessel"],correct:0},
+  {category:"Objekte",difficulty:"schwer",question:"Welche Kette oeffnet Hermione im dritten Jahr neue Zeit?",answers:["Zeitumkehrer","Horkrux","Medallion","Erinnermich"],correct:0},
+  {category:"Wesen",difficulty:"leicht",question:"Welches Wesen zieht Hogwarts-Kutschen fuer manche sichtbar?",answers:["Thestral","Hippogreif","Einhorn","Kneazle"],correct:0},
+  {category:"Wesen",difficulty:"leicht",question:"Wie heisst Hagrids Hippogreif?",answers:["Seidenschnabel","Aragog","Norbert","Fang"],correct:0},
+  {category:"Wesen",difficulty:"mittel",question:"Welche Spinne lebt im Verbotenen Wald?",answers:["Aragog","Nagini","Norbert","Grawp"],correct:0},
+  {category:"Wesen",difficulty:"mittel",question:"Was ist Fawkes?",answers:["Phonix","Drache","Hippogreif","Kneazle"],correct:0},
+  {category:"Wesen",difficulty:"schwer",question:"Welche Schlangenart ist Nagini?",answers:["Schlange","Basilisk","Ashwinder","Runespoor"],correct:0},
+  {category:"Wesen",difficulty:"schwer",question:"Welches Wesen bewacht oft wertvolle Dinge in Gringotts?",answers:["Drache","Thestral","Dementor","Kappa"],correct:0},
+  {category:"Wesen",difficulty:"mittel",question:"Welches Wesen saugt gute Gefuehle aus Menschen?",answers:["Dementor","Inferius","Pixie","Bowtruckle"],correct:0},
+  {category:"Wesen",difficulty:"mittel",question:"Was ist Norbert?",answers:["Drache","Eule","Hund","Ratte"],correct:0},
+  {category:"Wesen",difficulty:"schwer",question:"Welche Wesen leben im See bei Hogwarts?",answers:["Wassermenschen","Thestrale","Hauselfen","Doxys"],correct:0},
+  {category:"Wesen",difficulty:"schwer",question:"Was ist Firenze?",answers:["Zentaur","Riese","Hauself","Kobold"],correct:0}
+];
+
+window.MYSTERY_ITEMS = [
+  {name:"Hedwig",category:"Figuren",hints:["Ich bin meistens weiss.","Ich bringe Nachrichten.","Ich gehoere Harry."]},
+  {name:"Ron Weasley",category:"Figuren",hints:["Ich komme aus einer grossen Familie.","Ich habe rote Haare.","Ich bin Harrys bester Freund."]},
+  {name:"Hermione Granger",category:"Figuren",hints:["Ich lerne sehr viel.","Ich bin in Gryffindor.","Ich bin mit Harry und Ron befreundet."]},
+  {name:"Albus Dumbledore",category:"Figuren",hints:["Ich trage viel Verantwortung in Hogwarts.","Ich besitze einen Phonix.","Ich bin Schulleiter."]},
+  {name:"Severus Snape",category:"Figuren",hints:["Ich wirke streng und geheimnisvoll.","Ich unterrichte Zaubertraenke.","Ich bin der Halbblutprinz."]},
+  {name:"Hagrid",category:"Figuren",hints:["Ich liebe magische Wesen.","Ich bin sehr gross.","Ich bin Wildhueter von Hogwarts."]},
+  {name:"Sirius Black",category:"Figuren",hints:["Ich kann mich verwandeln.","Ich war in Askaban.","Ich bin Harrys Pate."]},
+  {name:"Dobby",category:"Figuren",hints:["Ich arbeite fuer eine Zaubererfamilie.","Ich will Harry warnen.","Ich bin ein Hauself."]},
+  {name:"Winkelgasse",category:"Orte",hints:["Hier gibt es viele magische Laeden.","Man erreicht mich ueber einen Pub.","Schueler kaufen hier Schulbedarf."]},
+  {name:"Hogsmeade",category:"Orte",hints:["Ich bin ein Dorf.","Schueler besuchen mich ab dem dritten Jahr.","Hier gibt es die Drei Besen."]},
+  {name:"Gringotts",category:"Orte",hints:["Ich werde von Kobolden betrieben.","Ich habe tiefe Verliese.","Ich bin eine Zaubererbank."]},
+  {name:"Fuchsbau",category:"Orte",hints:["Ich bin ein sehr lebendiges Zuhause.","Viele Weasleys wohnen hier.","Ich stehe etwas schief."]},
+  {name:"Verbotener Wald",category:"Orte",hints:["Ich liege bei Hogwarts.","Hier leben gefaehrliche Wesen.","Schueler sollen mich meiden."]},
+  {name:"Tarnumhang",category:"Objekte",hints:["Ich bin sehr selten.","Ich hilft beim Schleichen.","Ich macht unsichtbar."]},
+  {name:"Feuerkelch",category:"Objekte",hints:["Ich waehle Namen aus.","Ich spielt bei einem Turnier eine Rolle.","Ich bestimmt Champions."]},
+  {name:"Marauderkarte",category:"Objekte",hints:["Ich bin ein Stueck Pergament.","Ich zeigt Wege und Personen.","Ich gehoere zu den Rumtreibern."]},
+  {name:"Zeitumkehrer",category:"Objekte",hints:["Ich bin klein und tragbar.","Hermione nutzt mich fuer Unterricht.","Ich veraendert die Zeit."]},
+  {name:"Denkarium",category:"Objekte",hints:["Ich wirkt wie eine Schale.","Man kann darin etwas betrachten.","Ich zeigt Erinnerungen."]},
+  {name:"Lumos",category:"Zaubersprueche",hints:["Ich bin kurz.","Ich hilft im Dunkeln.","Ich erzeugt Licht."]},
+  {name:"Alohomora",category:"Zaubersprueche",hints:["Ich loese ein Hindernis.","Hermione nutzt mich frueh.","Ich oeffnet Schlösser."]},
+  {name:"Accio",category:"Zaubersprueche",hints:["Ich bewegt etwas zu dir.","Ich ist im Alltag nuetzlich.","Ich ruft Gegenstaende herbei."]},
+  {name:"Expelliarmus",category:"Zaubersprueche",hints:["Ich ist Harrys Spezialitaet.","Ich beendet viele Duelle.","Ich entwaffnet Gegner."]},
+  {name:"Expecto Patronum",category:"Zaubersprueche",hints:["Ich braucht starke gute Gedanken.","Ich hat eine persoenliche Form.","Ich schuetzt vor Dementoren."]},
+  {name:"Thestral",category:"Wesen",hints:["Ich bin nicht fuer jeden sichtbar.","Ich ziehe Kutschen.","Man sieht mich nach einer bestimmten Erfahrung."]},
+  {name:"Seidenschnabel",category:"Wesen",hints:["Ich bin stolz.","Man sollte sich vor mir verbeugen.","Ich bin ein Hippogreif."]},
+  {name:"Fawkes",category:"Wesen",hints:["Ich gehoere zu Dumbledore.","Ich kann neu geboren werden.","Ich bin ein Phonix."]},
+  {name:"Aragog",category:"Wesen",hints:["Ich lebe im Wald.","Ich habe viele Nachkommen.","Ich bin eine riesige Spinne."]},
+  {name:"Dementor",category:"Wesen",hints:["Ich wirke kalt und furchteinflossend.","Ich bewache Askaban.","Ich sauge Freude aus Menschen."]},
+  {name:"Sprechender Hut",category:"Objekte",hints:["Ich bin alt.","Ich pruefe neue Schueler.","Ich teilt Hogwarts-Haeuser zu."]},
+  {name:"Ollivanders",category:"Orte",hints:["Ich bin ein Laden.","Hier passt etwas Magisches zu dir.","Hier kauft man Zauberstaebe."]}
 ];

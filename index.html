@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#305f57">
+  <meta name="theme-color" content="#1b2838">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Zauberquiz">
   <title>Zauberquiz</title>
@@ -15,12 +15,33 @@
   <main class="app">
     <section id="startScreen" class="screen screen-active" aria-labelledby="appTitle">
       <div class="brand-row">
-        <span class="crest" aria-hidden="true">?</span>
-        <span id="offlineState">Offline bereit</span>
+        <span class="crest" aria-hidden="true">HP</span>
+        <span id="offlineState" class="status-pill">Offline bereit</span>
       </div>
 
-      <h1 id="appTitle">Zauberquiz</h1>
-      <p class="intro">Ein kleines Fan-Raetselspiel fuer schnelle Runden auf dem iPhone.</p>
+      <div class="hero-copy">
+        <p class="eyebrow">Fan-Trivia</p>
+        <h1 id="appTitle">Hauspokal Quiz</h1>
+        <p class="intro">Sammle Punkte, waehle dein Fachgebiet und spiele schnelle Runden direkt auf dem iPhone.</p>
+      </div>
+
+      <div class="mode-grid" aria-label="Spielmodus">
+        <button id="soloMode" class="mode-card mode-card-active" type="button" data-mode="solo">
+          <span class="mode-icon solo-icon" aria-hidden="true"></span>
+          <span>Solo</span>
+          <strong>Trainingsrunde</strong>
+        </button>
+        <button id="duelMode" class="mode-card" type="button" data-mode="duel">
+          <span class="mode-icon duel-icon" aria-hidden="true"></span>
+          <span>Duell</span>
+          <strong>Zwei Spieler</strong>
+        </button>
+        <button id="mysteryMode" class="mode-card" type="button" data-mode="mystery">
+          <span class="mode-icon mystery-icon" aria-hidden="true"></span>
+          <span>Geheimnis</span>
+          <strong>Hinweise erraten</strong>
+        </button>
+      </div>
 
       <div class="stats-grid">
         <div>
@@ -28,21 +49,36 @@
           <strong id="homeBest">0</strong>
         </div>
         <div>
-          <span>Fragen</span>
+          <span id="poolLabel">Fragen</span>
           <strong id="questionTotal">0</strong>
         </div>
       </div>
 
       <form id="setupForm" class="setup-form">
-        <label for="categorySelect">Kategorie</label>
-        <select id="categorySelect" name="category"></select>
+        <div id="duelFields" class="duel-fields" hidden>
+          <div class="field-row">
+            <label for="playerOne">Spieler 1</label>
+            <input id="playerOne" name="playerOne" type="text" value="Spieler 1" autocomplete="off">
+          </div>
+          <div class="field-row">
+            <label for="playerTwo">Spieler 2</label>
+            <input id="playerTwo" name="playerTwo" type="text" value="Spieler 2" autocomplete="off">
+          </div>
+        </div>
 
-        <label for="roundLength">Rundenlaenge</label>
-        <select id="roundLength" name="roundLength">
-          <option value="5">5 Fragen</option>
-          <option value="10" selected>10 Fragen</option>
-          <option value="15">15 Fragen</option>
-        </select>
+        <div class="field-row">
+          <label for="categorySelect">Kategorie</label>
+          <select id="categorySelect" name="category"></select>
+        </div>
+
+        <div class="field-row">
+          <label for="roundLength">Rundenlaenge</label>
+          <select id="roundLength" name="roundLength">
+            <option value="5">5 Fragen</option>
+            <option value="10" selected>10 Fragen</option>
+            <option value="15">15 Fragen</option>
+          </select>
+        </div>
 
         <button class="primary-button" type="submit">Runde starten</button>
       </form>
@@ -57,8 +93,13 @@
             <div id="progressBar" class="progress-bar"></div>
           </div>
         </div>
-        <strong id="scoreLabel">0</strong>
+        <div class="score-chip">
+          <span id="scoreChipLabel">Punkte</span>
+          <strong id="scoreLabel">0</strong>
+        </div>
       </div>
+
+      <div id="turnBanner" class="turn-banner" hidden></div>
 
       <div class="question-card">
         <div class="question-meta">
@@ -72,21 +113,22 @@
 
       <p id="feedback" class="feedback" aria-live="polite"></p>
 
-      <button id="nextButton" class="primary-button next-button" type="button" disabled>Weiter</button>
+      <button id="hintButton" class="secondary-button" type="button" hidden>Naechster Hinweis</button>
+      <button id="nextButton" class="primary-button next-button" type="button" disabled>Naechste Frage</button>
     </section>
 
     <section id="resultScreen" class="screen" aria-labelledby="resultTitle">
-      <div class="result-mark" aria-hidden="true">✓</div>
+      <div class="result-mark" aria-hidden="true">HP</div>
       <h2 id="resultTitle">Runde beendet</h2>
       <p id="resultText" class="intro"></p>
 
       <div class="stats-grid">
         <div>
-          <span>Punkte</span>
+          <span id="finalScoreLabel">Punkte</span>
           <strong id="finalScore">0</strong>
         </div>
         <div>
-          <span>Richtig</span>
+          <span id="finalCorrectLabel">Richtig</span>
           <strong id="finalCorrect">0</strong>
         </div>
       </div>
