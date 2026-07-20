@@ -1,6 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="92" fill="#305f57"/>
-  <path d="M144 108h224l-26 272-86 44-86-44-26-272Z" fill="#fffaf0"/>
-  <path d="M256 154 304 270h-38l-10-28h-48l-10 28h-38l48-116h48Zm-36 56h24l-12-34-12 34Z" fill="#305f57"/>
-  <path d="M184 314h144v34H184v-34Z" fill="#b37a2c"/>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="42" x2="432" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#182838"/>
+      <stop offset="1" stop-color="#061018"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="146" y1="82" x2="362" y2="438" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe395"/>
+      <stop offset=".58" stop-color="#d4a947"/>
+      <stop offset="1" stop-color="#8d5f1d"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="92" fill="url(#bg)"/>
+  <circle cx="256" cy="232" r="176" fill="#f7efda" opacity=".06"/>
+  <path d="M170 122h172v54c0 76-38 126-86 126s-86-50-86-126v-54Z" fill="url(#gold)"/>
+  <path d="M170 154h-50c-2 58 26 96 66 104l-10-42c-18-10-30-30-30-44h24v-18Zm172 0h50c2 58-26 96-66 104l10-42c18-10 30-30 30-44h-24v-18Z" fill="url(#gold)"/>
+  <path d="M234 298h44v54h-44v-54Z" fill="url(#gold)"/>
+  <path d="M184 352h144l26 50H158l26-50Z" fill="url(#gold)"/>
+  <path d="M85 398h342v30H85v-30Z" fill="#f7efda" opacity=".18"/>
+  <path d="M205 178h102v20H205v-20Z" fill="#f7efda" opacity=".2"/>
+  <path d="M256 146l13 31 34 3-26 22 8 33-29-17-29 17 8-33-26-22 34-3 13-31Z" fill="#fff6ca"/>
+  <path d="M256 74l10 22 24 2-18 16 5 24-21-13-21 13 5-24-18-16 24-2 10-22Z" fill="#75b6a2"/>
 </svg>
