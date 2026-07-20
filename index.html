@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#305f57">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Zauberquiz">
+  <title>Zauberquiz</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <section id="startScreen" class="screen screen-active" aria-labelledby="appTitle">
+      <div class="brand-row">
+        <span class="crest" aria-hidden="true">?</span>
+        <span id="offlineState">Offline bereit</span>
+      </div>
+
+      <h1 id="appTitle">Zauberquiz</h1>
+      <p class="intro">Ein kleines Fan-Raetselspiel fuer schnelle Runden auf dem iPhone.</p>
+
+      <div class="stats-grid">
+        <div>
+          <span>Bestwert</span>
+          <strong id="homeBest">0</strong>
+        </div>
+        <div>
+          <span>Fragen</span>
+          <strong id="questionTotal">0</strong>
+        </div>
+      </div>
+
+      <form id="setupForm" class="setup-form">
+        <label for="categorySelect">Kategorie</label>
+        <select id="categorySelect" name="category"></select>
+
+        <label for="roundLength">Rundenlaenge</label>
+        <select id="roundLength" name="roundLength">
+          <option value="5">5 Fragen</option>
+          <option value="10" selected>10 Fragen</option>
+          <option value="15">15 Fragen</option>
+        </select>
+
+        <button class="primary-button" type="submit">Runde starten</button>
+      </form>
+    </section>
+
+    <section id="gameScreen" class="screen" aria-labelledby="questionText">
+      <div class="game-topbar">
+        <button id="quitButton" class="icon-button" type="button" aria-label="Zurueck">‹</button>
+        <div class="progress-wrap" aria-label="Fortschritt">
+          <span id="progressLabel">Frage 1 von 10</span>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+        <strong id="scoreLabel">0</strong>
+      </div>
+
+      <div class="question-card">
+        <div class="question-meta">
+          <span id="categoryLabel">Kategorie</span>
+          <span id="difficultyLabel">Mittel</span>
+        </div>
+        <h2 id="questionText">Frage</h2>
+      </div>
+
+      <div id="answers" class="answers" role="group" aria-label="Antworten"></div>
+
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+
+      <button id="nextButton" class="primary-button next-button" type="button" disabled>Weiter</button>
+    </section>
+
+    <section id="resultScreen" class="screen" aria-labelledby="resultTitle">
+      <div class="result-mark" aria-hidden="true">✓</div>
+      <h2 id="resultTitle">Runde beendet</h2>
+      <p id="resultText" class="intro"></p>
+
+      <div class="stats-grid">
+        <div>
+          <span>Punkte</span>
+          <strong id="finalScore">0</strong>
+        </div>
+        <div>
+          <span>Richtig</span>
+          <strong id="finalCorrect">0</strong>
+        </div>
+      </div>
+
+      <button id="playAgainButton" class="primary-button" type="button">Noch eine Runde</button>
+    </section>
+  </main>
+
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
