@@ -171,12 +171,12 @@ function renderQuestion() {
   elements.nextButton.textContent = state.mode === "duel" ? "Weitergeben" : "Nächste Frage";
 
   elements.answers.innerHTML = "";
-  current.answers.forEach((answer, answerIndex) => {
+  shuffle(current.answers.map((answer, answerIndex) => ({ answer, answerIndex }))).forEach((choice) => {
     const button = document.createElement("button");
     button.className = "answer-button";
     button.type = "button";
-    button.textContent = answer;
-    button.addEventListener("click", () => chooseQuizAnswer(button, answerIndex));
+    button.textContent = choice.answer;
+    button.addEventListener("click", () => chooseQuizAnswer(button, choice.answerIndex));
     elements.answers.appendChild(button);
   });
 }
@@ -189,9 +189,9 @@ function chooseQuizAnswer(button, answerIndex) {
   const correct = answerIndex === current.correct;
   state.answered = true;
 
-  buttons.forEach((answerButton, index) => {
+  buttons.forEach((answerButton) => {
     answerButton.disabled = true;
-    if (index === current.correct) answerButton.classList.add("correct");
+    if (answerButton.textContent === current.answers[current.correct]) answerButton.classList.add("correct");
   });
 
   if (correct) {
