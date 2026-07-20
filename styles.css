@@ -138,73 +138,44 @@ h2 {
 
 .mode-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
   margin: 22px 0 10px;
 }
 
 .mode-card {
   display: grid;
-  grid-template-columns: 46px 1fr;
-  column-gap: 12px;
-  min-height: 78px;
-  padding: 13px;
+  grid-template-rows: 38px auto auto;
+  place-items: center;
+  min-width: 0;
+  min-height: 112px;
+  padding: 10px 7px;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink);
   background: var(--surface);
-  text-align: left;
+  text-align: center;
 }
 
 .mode-icon {
   position: relative;
-  grid-row: span 2;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 8px;
   border: 1px solid rgba(212, 169, 71, 0.38);
   background: rgba(212, 169, 71, 0.12);
 }
 
-.mode-card .mode-icon {
-  display: grid;
-}
-
-.solo-icon::before {
-  content: "";
-  width: 5px;
+.mode-icon svg {
+  width: 28px;
   height: 28px;
-  border-radius: 999px;
-  background: var(--primary);
-  transform: rotate(38deg);
-  box-shadow: 0 -10px 0 -2px var(--accent);
-}
-
-.duel-icon::before,
-.duel-icon::after {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 30px;
-  border-radius: 999px;
-  background: var(--primary);
-}
-
-.duel-icon::before {
-  transform: rotate(42deg);
-}
-
-.duel-icon::after {
-  transform: rotate(-42deg);
-}
-
-.mystery-icon::before {
-  content: "?";
-  color: var(--primary);
-  font-size: 1.45rem;
-  font-weight: 800;
+  fill: none;
+  stroke: var(--primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
 }
 
 .mode-card span,
@@ -217,8 +188,17 @@ h2 {
 
 .mode-card strong {
   display: block;
-  margin-top: 6px;
-  font-size: 1.02rem;
+  margin-top: 3px;
+  max-width: 100%;
+  font-size: 0.84rem;
+  line-height: 1.15;
+}
+
+.mode-card > span:not(.mode-icon) {
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 800;
 }
 
 .mode-card-active {
@@ -460,5 +440,18 @@ button {
 
   .duel-fields {
     grid-template-columns: 1fr;
+  }
+
+  .mode-grid {
+    gap: 6px;
+  }
+
+  .mode-card {
+    min-height: 106px;
+    padding: 9px 5px;
+  }
+
+  .mode-card strong {
+    font-size: 0.78rem;
   }
 }

@@ -22,24 +22,47 @@
       <div class="hero-copy">
         <p class="eyebrow">Fan-Trivia</p>
         <h1 id="appTitle">Hauspokal Quiz</h1>
-        <p class="intro">Sammle Punkte, waehle dein Fachgebiet und spiele schnelle Runden direkt auf dem iPhone.</p>
+        <p class="intro">Sammle Punkte, wähle dein Fachgebiet und spiele schnelle Runden direkt auf dem iPhone.</p>
       </div>
 
       <div class="mode-grid" aria-label="Spielmodus">
         <button id="soloMode" class="mode-card mode-card-active" type="button" data-mode="solo">
-          <span class="mode-icon solo-icon" aria-hidden="true"></span>
+          <span class="mode-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <path d="M29 7l2.8 6.2L38 16l-6.2 2.8L29 25l-2.8-6.2L20 16l6.2-2.8L29 7Z"/>
+              <path d="M16 28l14 14"/>
+              <path d="M12 24l12 12"/>
+              <path d="M18 22l8 8"/>
+            </svg>
+          </span>
           <span>Solo</span>
-          <strong>Trainingsrunde</strong>
+          <strong>Allein</strong>
         </button>
         <button id="duelMode" class="mode-card" type="button" data-mode="duel">
-          <span class="mode-icon duel-icon" aria-hidden="true"></span>
+          <span class="mode-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <path d="M13 10l25 25"/>
+              <path d="M35 10L10 35"/>
+              <path d="M9 39l6-2 2-6"/>
+              <path d="M39 39l-6-2-2-6"/>
+              <path d="M24 7l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>
+            </svg>
+          </span>
           <span>Duell</span>
-          <strong>Zwei Spieler</strong>
+          <strong>2 Spieler</strong>
         </button>
         <button id="mysteryMode" class="mode-card" type="button" data-mode="mystery">
-          <span class="mode-icon mystery-icon" aria-hidden="true"></span>
-          <span>Geheimnis</span>
-          <strong>Hinweise erraten</strong>
+          <span class="mode-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="20" r="12"/>
+              <path d="M18 35h12"/>
+              <path d="M15 41h18"/>
+              <path d="M21.5 17a3 3 0 1 1 4.7 2.5c-1.4.9-2.2 1.7-2.2 3.5"/>
+              <path d="M24 28h.1"/>
+            </svg>
+          </span>
+          <span>Hinweise</span>
+          <strong>Raten</strong>
         </button>
       </div>
 
@@ -72,7 +95,7 @@
         </div>
 
         <div class="field-row">
-          <label for="roundLength">Rundenlaenge</label>
+          <label for="roundLength">Rundenlänge</label>
           <select id="roundLength" name="roundLength">
             <option value="5">5 Fragen</option>
             <option value="10" selected>10 Fragen</option>
@@ -86,7 +109,7 @@
 
     <section id="gameScreen" class="screen" aria-labelledby="questionText">
       <div class="game-topbar">
-        <button id="quitButton" class="icon-button" type="button" aria-label="Zurueck">‹</button>
+        <button id="quitButton" class="icon-button" type="button" aria-label="Zurück">‹</button>
         <div class="progress-wrap" aria-label="Fortschritt">
           <span id="progressLabel">Frage 1 von 10</span>
           <div class="progress-track">
@@ -113,8 +136,8 @@
 
       <p id="feedback" class="feedback" aria-live="polite"></p>
 
-      <button id="hintButton" class="secondary-button" type="button" hidden>Naechster Hinweis</button>
-      <button id="nextButton" class="primary-button next-button" type="button" disabled>Naechste Frage</button>
+      <button id="hintButton" class="secondary-button" type="button" hidden>Nächster Hinweis</button>
+      <button id="nextButton" class="primary-button next-button" type="button" disabled>Nächste Frage</button>
     </section>
 
     <section id="resultScreen" class="screen" aria-labelledby="resultTitle">

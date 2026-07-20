@@ -168,7 +168,7 @@ function renderQuestion() {
   elements.categoryLabel.textContent = current.category;
   elements.difficultyLabel.textContent = current.difficulty;
   elements.questionText.textContent = current.question;
-  elements.nextButton.textContent = state.mode === "duel" ? "Weitergeben" : "Naechste Frage";
+  elements.nextButton.textContent = state.mode === "duel" ? "Weitergeben" : "Nächste Frage";
 
   elements.answers.innerHTML = "";
   current.answers.forEach((answer, answerIndex) => {
@@ -200,7 +200,7 @@ function chooseQuizAnswer(button, answerIndex) {
     elements.feedback.textContent = "Richtig.";
   } else {
     button.classList.add("wrong");
-    elements.feedback.textContent = `Nicht ganz. Richtig waere: ${current.answers[current.correct]}.`;
+    elements.feedback.textContent = `Nicht ganz. Richtig wäre: ${current.answers[current.correct]}.`;
   }
 
   refreshScore();
@@ -216,7 +216,7 @@ function renderMystery() {
   updateSharedHeader(total);
   elements.categoryLabel.textContent = current.category;
   elements.difficultyLabel.textContent = `${current.hints.length} Hinweise`;
-  elements.nextButton.textContent = "Naechstes Geheimnis";
+  elements.nextButton.textContent = "Nächstes Geheimnis";
   renderMysteryHint();
 
   const choices = shuffle([
@@ -259,10 +259,10 @@ function chooseMysteryAnswer(button, answer) {
     const points = Math.max(10, 40 - state.hintIndex * 10);
     awardPoints(points);
     button.classList.add("correct");
-    elements.feedback.textContent = `Richtig. ${points} Punkte fuer dieses Geheimnis.`;
+    elements.feedback.textContent = `Richtig. ${points} Punkte für dieses Geheimnis.`;
   } else {
     button.classList.add("wrong");
-    elements.feedback.textContent = `Geloest waere: ${current.name}.`;
+    elements.feedback.textContent = `Gelöst wäre: ${current.name}.`;
   }
 
   refreshScore();
@@ -310,7 +310,7 @@ function finishRound() {
     elements.finalCorrectLabel.textContent = two.name;
     elements.finalCorrect.textContent = String(two.score);
     elements.resultText.textContent = winner === "Unentschieden"
-      ? "Der Hauspokal wird geteilt. Das riecht nach Rueckrunde."
+      ? "Der Hauspokal wird geteilt. Das riecht nach Rückrunde."
       : `${winner} gewinnt den Hauspokal.`;
     showScreen("result");
     return;
