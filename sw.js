@@ -1,4 +1,4 @@
-const CACHE_NAME = "zauberquiz-v8";
+const CACHE_NAME = "zauberquiz-v24";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,7 +7,10 @@ const ASSETS = [
   "./app.js",
   "./manifest.json",
   "./icon.svg",
-  "./assets/castle-bg.png"
+  "./assets/castle-bg.png",
+  "./assets/house-cup.png",
+  "./assets/ornate-frame.svg",
+  "./assets/hp-crest.svg"
 ];
 
 self.addEventListener("install", (event) => {

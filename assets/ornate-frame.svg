@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b3d17"/>
+      <stop offset=".28" stop-color="#c58b36"/>
+      <stop offset=".5" stop-color="#ffe29b"/>
+      <stop offset=".72" stop-color="#b97924"/>
+      <stop offset="1" stop-color="#4b3212"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 18H282Q302 18 302 38V182Q302 202 282 202H38Q18 202 18 182V38Q18 18 38 18Z" stroke-width="1.7" opacity=".92"/>
+    <path d="M48 29H272Q291 29 291 48V172Q291 191 272 191H48Q29 191 29 172V48Q29 29 48 29Z" stroke-width=".8" opacity=".28"/>
+
+    <path d="M19 58C35 58 31 31 58 31" stroke-width="1.15" opacity=".9"/>
+    <path d="M301 58C285 58 289 31 262 31" stroke-width="1.15" opacity=".9"/>
+    <path d="M19 162C35 162 31 189 58 189" stroke-width="1.15" opacity=".9"/>
+    <path d="M301 162C285 162 289 189 262 189" stroke-width="1.15" opacity=".9"/>
+
+    <path d="M42 42l7 3 3 7 3-7 7-3-7-3-3-7-3 7-7 3Z" fill="#d8a64f" stroke-width=".45" opacity=".72"/>
+    <path d="M278 42l-7 3-3 7-3-7-7-3 7-3 3-7 3 7 7 3Z" fill="#d8a64f" stroke-width=".45" opacity=".72"/>
+    <path d="M42 178l7-3 3-7 3 7 7 3-7 3-3 7-3-7-7-3Z" fill="#d8a64f" stroke-width=".45" opacity=".72"/>
+    <path d="M278 178l-7-3-3-7-3 7-7 3 7 3 3 7 3-7 7-3Z" fill="#d8a64f" stroke-width=".45" opacity=".72"/>
+  </g>
+</svg>

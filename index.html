@@ -15,92 +15,210 @@
   <main class="app">
     <section id="startScreen" class="screen screen-active" aria-labelledby="appTitle">
       <div class="brand-row">
-        <span class="crest" aria-hidden="true">HP</span>
-        <span id="offlineState" class="status-pill">Offline bereit</span>
+        <span class="crest" aria-hidden="true"><span>HP</span></span>
+        <div class="brand-badges">
+          <span class="mode-pill" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 18l5-5"/><path d="M18 18l-5-5"/><path d="M7 4l13 13"/><path d="M17 4L4 17"/><path d="M4 20l3-1 1-3"/><path d="M20 20l-3-1-1-3"/></svg>
+            Hauspokal
+          </span>
+          <span id="offlineState" class="status-pill"><span class="status-dot"></span>Offline</span>
+        </div>
       </div>
 
       <div class="hero-copy">
-        <p class="eyebrow">Fan-Trivia</p>
-        <h1 id="appTitle">Hauspokal Quiz</h1>
-        <p class="intro">Sammle Punkte, wähle dein Fachgebiet und spiele schnelle Runden direkt auf dem iPhone.</p>
+        <h1 id="appTitle">Hauspokal<br>Quiz</h1>
+        <p class="intro">Sammle Punkte für dein Haus.</p>
       </div>
 
+      <div class="stats-card" aria-label="Spielstatistik">
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 6h3v2a4 4 0 0 1-4 4"/><path d="M7 6H4v2a4 4 0 0 0 4 4"/></svg>
+          </span>
+          <span>
+            <span>Bestwert</span>
+            <strong id="homeBest">0</strong>
+          </span>
+        </div>
+        <div class="stats-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 3h7l3 3v15H7V3Z"/><path d="M14 3v4h4"/><path d="M10 11h5"/><path d="M10 15h5"/></svg>
+          </span>
+          <span>
+            <span id="poolLabel">Fragenpool</span>
+            <strong id="questionTotal">0</strong>
+          </span>
+        </div>
+      </div>
+
+      <h2 class="section-title">Spielmodus</h2>
       <div class="mode-grid" aria-label="Spielmodus">
-        <button id="soloMode" class="mode-card mode-card-active" type="button" data-mode="solo">
+        <button id="soloMode" class="mode-card mode-card-active" type="button" data-mode="solo" aria-pressed="true">
+          <span class="mode-check" aria-hidden="true">✓</span>
           <span class="mode-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48">
-              <path d="M29 7l2.8 6.2L38 16l-6.2 2.8L29 25l-2.8-6.2L20 16l6.2-2.8L29 7Z"/>
-              <path d="M16 28l14 14"/>
-              <path d="M12 24l12 12"/>
-              <path d="M18 22l8 8"/>
+              <path d="M15 36l18-18"/>
+              <path d="M12 39l6-2 17-17-4-4-17 17-2 6Z"/>
+              <path d="M30 8l1.8 4 4.2 1.8-4.2 1.8-1.8 4-1.8-4-4.2-1.8 4.2-1.8L30 8Z"/>
+              <path d="M16 12l.9 2.1L19 15l-2.1.9L16 18l-.9-2.1L13 15l2.1-.9L16 12Z"/>
             </svg>
           </span>
-          <span>Solo</span>
+          <strong>Solo</strong>
+          <small>Gegen dich selbst</small>
         </button>
-        <button id="duelMode" class="mode-card" type="button" data-mode="duel">
+        <button id="duelMode" class="mode-card" type="button" data-mode="duel" aria-pressed="false">
+          <span class="mode-check" aria-hidden="true">✓</span>
           <span class="mode-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48">
+              <path d="M12 38l11-11"/>
+              <path d="M36 38L25 27"/>
               <path d="M13 10l25 25"/>
               <path d="M35 10L10 35"/>
-              <path d="M9 39l6-2 2-6"/>
-              <path d="M39 39l-6-2-2-6"/>
+              <path d="M10 39l5-1.8 1.8-5"/>
+              <path d="M38 39l-5-1.8-1.8-5"/>
               <path d="M24 7l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>
             </svg>
           </span>
-          <span>Duell</span>
+          <strong>Duell</strong>
+          <small>Gegen einen Mitspieler</small>
         </button>
-        <button id="mysteryMode" class="mode-card" type="button" data-mode="mystery">
+        <button id="mysteryMode" class="mode-card" type="button" data-mode="mystery" aria-pressed="false">
+          <span class="mode-check" aria-hidden="true">✓</span>
           <span class="mode-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48">
-              <circle cx="24" cy="20" r="12"/>
-              <path d="M18 35h12"/>
-              <path d="M15 41h18"/>
-              <path d="M21.5 17a3 3 0 1 1 4.7 2.5c-1.4.9-2.2 1.7-2.2 3.5"/>
-              <path d="M24 28h.1"/>
+              <path d="M16 25a10 10 0 1 1 16 0c-2 2.1-3.2 4.1-3.7 6H19.7c-.5-1.9-1.7-3.9-3.7-6Z"/>
+              <path d="M19 35h10"/>
+              <path d="M20.5 40h7"/>
+              <path d="M21.3 18.5a3 3 0 1 1 4.9 2.3c-1.4 1-2.2 1.8-2.2 3.7"/>
+              <path d="M24 28.8h.1"/>
             </svg>
           </span>
-          <span>Hinweise raten</span>
+          <strong>Hinweise</strong>
+          <small>Antworten mit Hinweisen erraten</small>
         </button>
-      </div>
-
-      <div class="stats-grid">
-        <div>
-          <span>Bestwert</span>
-          <strong id="homeBest">0</strong>
-        </div>
-        <div>
-          <span id="poolLabel">Fragen</span>
-          <strong id="questionTotal">0</strong>
-        </div>
       </div>
 
       <form id="setupForm" class="setup-form">
+        <section class="form-section" aria-labelledby="playersTitle">
+          <h2 id="playersTitle" class="section-title">Spieler</h2>
+          <div class="player-grid">
+            <div class="player-setup-card">
+              <label for="playerOne">Spieler 1</label>
+              <div class="input-shell">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <input id="playerOne" name="playerOne" type="text" placeholder="Name eingeben" autocomplete="off">
+                <span class="dice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg>
+                </span>
+              </div>
+            </div>
+            <div id="playerTwoCard" class="player-setup-card">
+              <label id="playerTwoLabel" for="playerTwo">Spieler 2 (optional)</label>
+              <div class="input-shell">
+                <span class="field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <input id="playerTwo" name="playerTwo" type="text" placeholder="Name eingeben" autocomplete="off">
+                <span class="dice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <p id="playerHelp" class="helper-text">Lasse das zweite Feld leer für den Solo-Modus.</p>
+        </section>
+
         <div id="duelFields" class="duel-fields" hidden>
-          <div class="field-row">
-            <label for="playerOne">Spieler 1</label>
-            <input id="playerOne" name="playerOne" type="text" value="Spieler 1" autocomplete="off">
+          <div class="player-setup-card">
+            <label>Haus Spieler 1</label>
+            <div class="house-choice-grid" aria-label="Haus für Spieler 1">
+              <button class="house-choice" type="button" data-player="0" data-house="gryffindor"><span></span>Gryffindor</button>
+              <button class="house-choice" type="button" data-player="0" data-house="slytherin"><span></span>Slytherin</button>
+              <button class="house-choice" type="button" data-player="0" data-house="ravenclaw"><span></span>Ravenclaw</button>
+              <button class="house-choice" type="button" data-player="0" data-house="hufflepuff"><span></span>Hufflepuff</button>
+            </div>
           </div>
-          <div class="field-row">
-            <label for="playerTwo">Spieler 2</label>
-            <input id="playerTwo" name="playerTwo" type="text" value="Spieler 2" autocomplete="off">
+          <div class="player-setup-card">
+            <label>Haus Spieler 2</label>
+            <div class="house-choice-grid" aria-label="Haus für Spieler 2">
+              <button class="house-choice" type="button" data-player="1" data-house="gryffindor"><span></span>Gryffindor</button>
+              <button class="house-choice" type="button" data-player="1" data-house="slytherin"><span></span>Slytherin</button>
+              <button class="house-choice" type="button" data-player="1" data-house="ravenclaw"><span></span>Ravenclaw</button>
+              <button class="house-choice" type="button" data-player="1" data-house="hufflepuff"><span></span>Hufflepuff</button>
+            </div>
           </div>
         </div>
 
-        <div class="field-row">
-          <label for="categorySelect">Kategorie</label>
-          <select id="categorySelect" name="category"></select>
-        </div>
-
-        <div class="field-row">
-          <label for="roundLength">Rundenlänge</label>
-          <select id="roundLength" name="roundLength">
-            <option value="5">5 Fragen</option>
-            <option value="10" selected>10 Fragen</option>
-            <option value="15">15 Fragen</option>
+        <div id="soloHouseField" class="solo-house-field">
+          <label>Haus</label>
+          <div class="house-choice-grid house-choice-grid-solo" aria-label="Haus auswählen">
+            <button class="house-choice" type="button" data-solo-house="gryffindor"><span></span>Gryffindor</button>
+            <button class="house-choice" type="button" data-solo-house="slytherin"><span></span>Slytherin</button>
+            <button class="house-choice" type="button" data-solo-house="ravenclaw"><span></span>Ravenclaw</button>
+            <button class="house-choice" type="button" data-solo-house="hufflepuff"><span></span>Hufflepuff</button>
+          </div>
+          <select id="houseSelect" name="house" class="visually-hidden" aria-hidden="true" tabindex="-1">
+              <option value="gryffindor">Gryffindor</option>
+              <option value="slytherin">Slytherin</option>
+              <option value="ravenclaw">Ravenclaw</option>
+              <option value="hufflepuff">Hufflepuff</option>
           </select>
         </div>
 
-        <button class="primary-button" type="submit">Hauspokal starten</button>
+        <section class="form-section" aria-labelledby="settingsTitle">
+          <h2 id="settingsTitle" class="section-title">Quiz-Einstellungen</h2>
+
+          <div class="field-row settings-row">
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            </span>
+            <label for="categorySelect">Kategorie</label>
+            <select id="categorySelect" name="category" class="visually-hidden" aria-hidden="true" tabindex="-1"></select>
+            <div id="categoryChoices" class="choice-strip" aria-label="Kategorie auswählen"></div>
+          </div>
+
+          <div class="field-row settings-row">
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <label for="roundLength">Rundenlänge</label>
+            <select id="roundLength" name="roundLength" class="visually-hidden" aria-hidden="true" tabindex="-1">
+              <option value="5">5 Fragen</option>
+              <option value="10" selected>10 Fragen</option>
+              <option value="15">15 Fragen</option>
+            </select>
+            <div id="roundChoices" class="choice-strip choice-strip-fixed" aria-label="Rundenlänge auswählen">
+              <button type="button" data-round-length="5">5</button>
+              <button type="button" data-round-length="10">10</button>
+              <button type="button" data-round-length="15">15</button>
+            </div>
+          </div>
+
+          <div class="field-row settings-row">
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 17h16"/><path d="M7 13h10"/><path d="M10 9h4"/><path d="M12 5v14"/></svg>
+            </span>
+            <label for="difficultySelect">Schwierigkeit</label>
+            <select id="difficultySelect" name="difficulty" class="visually-hidden" aria-hidden="true" tabindex="-1">
+              <option value="Alle" selected>Alle</option>
+              <option value="leicht">Leicht</option>
+              <option value="mittel">Mittel</option>
+              <option value="schwer">Schwer</option>
+            </select>
+            <div id="difficultyChoices" class="choice-strip choice-strip-fixed" aria-label="Schwierigkeit auswählen">
+              <button type="button" data-difficulty="Alle">Alle</button>
+              <button type="button" data-difficulty="leicht">Leicht</button>
+              <button type="button" data-difficulty="mittel">Mittel</button>
+              <button type="button" data-difficulty="schwer">Schwer</button>
+            </div>
+          </div>
+        </section>
+
+        <button id="startButton" class="primary-button" type="submit"><span aria-hidden="true">✦</span> Quizrunde starten</button>
+        <p class="start-hint"><span aria-hidden="true">✣</span> Tippe auf die Felder, um deine Einstellungen anzupassen.</p>
       </form>
     </section>
 
@@ -116,6 +234,27 @@
         <div class="score-chip">
           <span id="scoreChipLabel">Punkte</span>
           <strong id="scoreLabel">0</strong>
+        </div>
+      </div>
+
+      <div id="duelBoard" class="duel-board" hidden>
+        <div class="duel-meta">
+          <span id="duelRoundLabel">Runde 1</span>
+          <span aria-hidden="true">•</span>
+          <span id="duelCategoryLabel">Kategorie</span>
+        </div>
+        <div class="duel-scoreline">
+          <div class="duel-player duel-player-one">
+            <span id="duelHouseOne" class="house-shield" data-house="gryffindor" aria-hidden="true">G</span>
+            <span id="duelNameOne" class="duel-name">Spieler 1</span>
+            <strong id="duelScoreOne">0</strong>
+          </div>
+          <span class="duel-vs" aria-hidden="true">VS</span>
+          <div class="duel-player duel-player-two">
+            <span id="duelHouseTwo" class="house-shield" data-house="slytherin" aria-hidden="true">S</span>
+            <span id="duelNameTwo" class="duel-name">Spieler 2</span>
+            <strong id="duelScoreTwo">0</strong>
+          </div>
         </div>
       </div>
 
@@ -138,8 +277,11 @@
     </section>
 
     <section id="resultScreen" class="screen" aria-labelledby="resultTitle">
-      <div class="result-mark" aria-hidden="true">HP</div>
+      <div id="resultTrophy" class="house-cup-image" aria-hidden="true">
+        <img src="./assets/house-cup.png" alt="">
+      </div>
       <h2 id="resultTitle">Runde beendet</h2>
+      <p id="resultHouseLabel" class="result-house"></p>
       <p id="resultText" class="intro"></p>
 
       <div class="stats-grid">

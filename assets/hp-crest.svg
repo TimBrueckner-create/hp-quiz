@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 220">
+  <defs>
+    <linearGradient id="gold" x1="18" y1="6" x2="162" y2="206" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe7a8"/>
+      <stop offset=".26" stop-color="#d8a64f"/>
+      <stop offset=".52" stop-color="#fff0bd"/>
+      <stop offset=".76" stop-color="#a86f24"/>
+      <stop offset="1" stop-color="#5d3b12"/>
+    </linearGradient>
+    <radialGradient id="inner" cx="50%" cy="18%" r="85%">
+      <stop offset="0" stop-color="#203747"/>
+      <stop offset=".58" stop-color="#0b1c2b"/>
+      <stop offset="1" stop-color="#06111c"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <g filter="url(#softShadow)">
+    <path d="M90 8 160 31 151 140 90 205 29 140 20 31Z" fill="url(#gold)"/>
+    <path d="M90 22 144 40 136 132 90 184 44 132 36 40Z" fill="url(#inner)" stroke="#f0c86b" stroke-width="3"/>
+    <path d="M90 34 132 48 126 126 90 165 54 126 48 48Z" fill="none" stroke="#d8a64f" stroke-width="1.5" opacity=".55"/>
+    <path d="M90 16l5 12 12 5-12 5-5 12-5-12-12-5 12-5Z" fill="#ffe7a8" stroke="#b97924" stroke-width="1"/>
+    <path d="M56 58h68" stroke="#d8a64f" stroke-width="3" stroke-linecap="round" opacity=".84"/>
+    <text x="90" y="125" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#ffe9b0" stroke="#5d3b12" stroke-width="1.3" paint-order="stroke">HP</text>
+    <path d="M58 151c18 11 45 11 64 0" fill="none" stroke="#d8a64f" stroke-width="2" stroke-linecap="round" opacity=".78"/>
+  </g>
+</svg>
