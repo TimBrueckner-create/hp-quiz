@@ -1,4 +1,4 @@
-const CACHE_NAME = "zauberquiz-v24";
+const CACHE_NAME = "zauberquiz-v34";
 const ASSETS = [
   "./",
   "./index.html",

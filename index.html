@@ -97,6 +97,22 @@
           <strong>Hinweise</strong>
           <small>Antworten mit Hinweisen erraten</small>
         </button>
+        <button id="buzzerMode" class="mode-card" type="button" data-mode="buzzer" aria-pressed="false">
+          <span class="mode-check" aria-hidden="true">✓</span>
+          <span class="mode-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="25" r="10"/>
+              <path d="M14 34h20"/>
+              <path d="M18 39h12"/>
+              <path d="M24 7v5"/>
+              <path d="M12 13l3.5 3.5"/>
+              <path d="M36 13l-3.5 3.5"/>
+              <path d="M24 20a5 5 0 0 1 5 5"/>
+            </svg>
+          </span>
+          <strong>Buzzer</strong>
+          <small>Schnell buzzern und stehlen</small>
+        </button>
       </div>
 
       <form id="setupForm" class="setup-form">
@@ -259,6 +275,7 @@
       </div>
 
       <div id="turnBanner" class="turn-banner" hidden></div>
+      <div id="buzzerStatus" class="buzzer-status" hidden></div>
 
       <div class="question-card">
         <div class="question-meta">
@@ -266,6 +283,23 @@
           <span id="difficultyLabel">Mittel</span>
         </div>
         <h2 id="questionText">Frage</h2>
+      </div>
+
+      <div id="buzzerPanel" class="buzzer-panel" hidden>
+        <button id="buzzerOne" class="buzzer-button" type="button" data-player="0">
+          <span id="buzzerOneHouse" class="house-shield" data-house="gryffindor" aria-hidden="true">G</span>
+          <strong id="buzzerOneName">Spieler 1</strong>
+          <small>Buzzern</small>
+        </button>
+        <div class="buzzer-center" aria-live="polite">
+          <span id="buzzerCenterLabel">Bereit?</span>
+          <strong id="buzzerCountdown">12</strong>
+        </div>
+        <button id="buzzerTwo" class="buzzer-button" type="button" data-player="1">
+          <span id="buzzerTwoHouse" class="house-shield" data-house="slytherin" aria-hidden="true">S</span>
+          <strong id="buzzerTwoName">Spieler 2</strong>
+          <small>Buzzern</small>
+        </button>
       </div>
 
       <div id="answers" class="answers" role="group" aria-label="Antworten"></div>

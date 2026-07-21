@@ -37,6 +37,16 @@ const elements = {
   duelNameTwo: document.getElementById("duelNameTwo"),
   duelScoreTwo: document.getElementById("duelScoreTwo"),
   duelHouseTwo: document.getElementById("duelHouseTwo"),
+  buzzerStatus: document.getElementById("buzzerStatus"),
+  buzzerPanel: document.getElementById("buzzerPanel"),
+  buzzerOne: document.getElementById("buzzerOne"),
+  buzzerTwo: document.getElementById("buzzerTwo"),
+  buzzerOneHouse: document.getElementById("buzzerOneHouse"),
+  buzzerTwoHouse: document.getElementById("buzzerTwoHouse"),
+  buzzerOneName: document.getElementById("buzzerOneName"),
+  buzzerTwoName: document.getElementById("buzzerTwoName"),
+  buzzerCenterLabel: document.getElementById("buzzerCenterLabel"),
+  buzzerCountdown: document.getElementById("buzzerCountdown"),
   turnBanner: document.getElementById("turnBanner"),
   categoryLabel: document.getElementById("categoryLabel"),
   difficultyLabel: document.getElementById("difficultyLabel"),
@@ -77,8 +87,11 @@ const HOUSE_INITIALS = {
 const MODE_LABELS = {
   solo: "Quizrunde starten",
   duel: "Zum Duell antreten",
-  mystery: "Rätselrunde starten"
+  mystery: "Rätselrunde starten",
+  buzzer: "Buzzerduell starten"
 };
+
+const BUZZER_SECONDS = 12;
 
 const state = {
   mode: "solo",
@@ -93,6 +106,11 @@ const state = {
   correct: 0,
   answered: false,
   hintIndex: 0,
+  buzzerTimer: null,
+  buzzerTimeLeft: BUZZER_SECONDS,
+  buzzerAttempts: [],
+  buzzerAnswering: null,
+  buzzerPhase: "waiting",
   players: [
     { name: "Spieler 1", score: 0, correct: 0 },
     { name: "Spieler 2", score: 0, correct: 0 }
@@ -172,6 +190,10 @@ function getPool() {
   return state.mode === "mystery" ? window.MYSTERY_ITEMS : window.QUIZ_QUESTIONS;
 }
 
+function isTwoPlayerMode() {
+  return state.mode === "duel" || state.mode === "buzzer";
+}
+
 function fillCategories() {
   const pool = getPool();
   const selectedCategory = elements.categorySelect.value || "Alle";
@@ -226,12 +248,12 @@ function updateHome() {
   elements.homeBest.textContent = String(getBestScore());
   elements.poolLabel.textContent = state.mode === "mystery" ? "Hinweispool" : "Fragenpool";
   elements.questionTotal.textContent = `${getPool().length} ${state.mode === "mystery" ? "Geheimnisse" : "Fragen"}`;
-  elements.duelFields.hidden = state.mode !== "duel";
-  elements.playerTwoCard.hidden = state.mode !== "duel";
-  elements.playerTwoLabel.textContent = state.mode === "duel" ? "Spieler 2" : "Spieler 2 (optional)";
+  elements.duelFields.hidden = !isTwoPlayerMode();
+  elements.playerTwoCard.hidden = !isTwoPlayerMode();
+  elements.playerTwoLabel.textContent = isTwoPlayerMode() ? "Spieler 2" : "Spieler 2 (optional)";
   elements.playerHelp.hidden = true;
-  elements.soloHouseField.hidden = state.mode === "duel";
-  elements.startButton.innerHTML = `<span aria-hidden="true">${state.mode === "duel" ? "⚔" : "✦"}</span> ${MODE_LABELS[state.mode]}`;
+  elements.soloHouseField.hidden = isTwoPlayerMode();
+  elements.startButton.innerHTML = `<span aria-hidden="true">${isTwoPlayerMode() ? "⚔" : "✦"}</span> ${MODE_LABELS[state.mode]}`;
 }
 
 function selectMode(mode) {
@@ -241,7 +263,7 @@ function selectMode(mode) {
     card.classList.toggle("mode-card-active", card.dataset.mode === mode);
     card.setAttribute("aria-pressed", String(card.dataset.mode === mode));
   });
-  setVisualHouse(mode === "duel" ? state.playerHouses[0] : state.house);
+  setVisualHouse(isTwoPlayerMode() ? state.playerHouses[0] : state.house);
   fillCategories();
   updateHome();
 }
@@ -265,18 +287,24 @@ function startRound(category, length, difficulty) {
   state.correct = 0;
   state.answered = false;
   state.hintIndex = 0;
+  state.buzzerAttempts = [];
+  state.buzzerAnswering = null;
+  state.buzzerPhase = "waiting";
+  stopBuzzerTimer();
   state.activePlayer = 0;
   state.players = [
     { name: elements.playerOne.value.trim() || "Spieler 1", house: state.playerHouses[0], score: 0, correct: 0 },
     { name: elements.playerTwo.value.trim() || "Spieler 2", house: state.playerHouses[1], score: 0, correct: 0 }
   ];
-  setVisualHouse(state.mode === "duel" ? state.players[0].house : state.house);
+  setVisualHouse(isTwoPlayerMode() ? state.players[0].house : state.house);
   showScreen("game");
   renderCurrent();
 }
 
 function renderCurrent() {
-  if (state.mode === "mystery") {
+  if (state.mode === "buzzer") {
+    renderBuzzerQuestion();
+  } else if (state.mode === "mystery") {
     renderMystery();
   } else {
     renderQuestion();
@@ -289,13 +317,16 @@ function updateSharedHeader(total) {
   elements.feedback.className = "feedback";
   elements.feedback.textContent = "";
   elements.nextButton.disabled = true;
+  elements.nextButton.hidden = state.mode === "buzzer";
   elements.hintButton.hidden = state.mode !== "mystery";
+  elements.buzzerPanel.hidden = true;
+  elements.buzzerStatus.hidden = true;
 
-  if (state.mode === "duel") {
+  if (isTwoPlayerMode()) {
     const player = state.players[state.activePlayer];
     setVisualHouse(player.house);
     elements.duelBoard.hidden = false;
-    elements.turnBanner.hidden = false;
+    elements.turnBanner.hidden = state.mode === "buzzer";
     elements.turnBanner.textContent = `${player.name} spielt für ${HOUSE_NAMES[player.house]}`;
     elements.scoreChipLabel.textContent = player.name;
     elements.scoreLabel.textContent = String(player.score);
@@ -308,11 +339,12 @@ function updateSharedHeader(total) {
 }
 
 function updateDuelBoard(current) {
-  if (state.mode !== "duel") return;
+  if (!isTwoPlayerMode()) return;
 
   const [one, two] = state.players;
   elements.duelRoundLabel.textContent = `Runde ${state.index + 1}`;
-  elements.duelCategoryLabel.textContent = `Kategorie: ${current.category}`;
+  elements.duelCategoryLabel.textContent = state.mode === "buzzer" ? "" : `Kategorie: ${current.category}`;
+  elements.duelCategoryLabel.hidden = state.mode === "buzzer";
   elements.duelNameOne.textContent = one.name;
   elements.duelScoreOne.textContent = String(one.score);
   elements.duelHouseOne.textContent = HOUSE_INITIALS[one.house];
@@ -323,6 +355,182 @@ function updateDuelBoard(current) {
   elements.duelHouseTwo.textContent = HOUSE_INITIALS[two.house];
   elements.duelHouseTwo.dataset.house = two.house;
   elements.duelHouseTwo.setAttribute("aria-label", HOUSE_NAMES[two.house]);
+  elements.duelNameOne.closest(".duel-player").classList.toggle("duel-player-active", state.mode === "buzzer" && state.buzzerAnswering === 0);
+  elements.duelNameTwo.closest(".duel-player").classList.toggle("duel-player-active", state.mode === "buzzer" && state.buzzerAnswering === 1);
+  updateVersusTimer();
+}
+
+function renderBuzzerQuestion() {
+  const current = state.deck[state.index];
+  const total = state.deck.length;
+  state.answered = false;
+  state.buzzerAttempts = [];
+  state.buzzerAnswering = null;
+  state.buzzerPhase = "waiting";
+  stopBuzzerTimer();
+  updateSharedHeader(total);
+  updateDuelBoard(current);
+  elements.categoryLabel.textContent = current.category;
+  elements.difficultyLabel.textContent = current.difficulty;
+  elements.categoryLabel.hidden = true;
+  elements.difficultyLabel.hidden = true;
+  elements.questionText.textContent = current.question;
+  elements.answers.innerHTML = "";
+  elements.answers.hidden = true;
+  elements.nextButton.textContent = "Nächste Buzzerfrage";
+  elements.nextButton.disabled = true;
+  elements.nextButton.hidden = true;
+  elements.buzzerPanel.hidden = false;
+  elements.buzzerStatus.hidden = true;
+  updateBuzzerButtons();
+  elements.buzzerCenterLabel.textContent = "Bereit?";
+  elements.buzzerCountdown.textContent = String(BUZZER_SECONDS);
+  updateVersusTimer();
+}
+
+function setBuzzerStatus(title, detail = "") {
+  elements.buzzerStatus.hidden = state.mode === "buzzer";
+  elements.buzzerStatus.innerHTML = detail
+    ? `<span>${title}</span><strong>${detail}</strong>`
+    : `<span>${title}</span>`;
+}
+
+function updateVersusTimer() {
+  const versus = document.querySelector(".duel-vs");
+  if (!versus) return;
+  const showTimer = state.mode === "buzzer" && state.buzzerPhase === "answering";
+  versus.textContent = showTimer ? String(Math.max(0, state.buzzerTimeLeft)) : "VS";
+  versus.classList.toggle("duel-vs-timer", showTimer);
+}
+
+function updateBuzzerButtons() {
+  const [one, two] = state.players;
+  elements.buzzerOneName.textContent = one.name;
+  elements.buzzerTwoName.textContent = two.name;
+  elements.buzzerOneHouse.textContent = HOUSE_INITIALS[one.house];
+  elements.buzzerTwoHouse.textContent = HOUSE_INITIALS[two.house];
+  elements.buzzerOneHouse.dataset.house = one.house;
+  elements.buzzerTwoHouse.dataset.house = two.house;
+  elements.buzzerOne.disabled = state.buzzerPhase !== "waiting" || state.buzzerAttempts.includes(0);
+  elements.buzzerTwo.disabled = state.buzzerPhase !== "waiting" || state.buzzerAttempts.includes(1);
+}
+
+function buzz(playerIndex) {
+  if (state.mode !== "buzzer" || state.buzzerPhase !== "waiting") return;
+  state.activePlayer = playerIndex;
+  state.buzzerAnswering = playerIndex;
+  state.buzzerAttempts.push(playerIndex);
+  state.buzzerPhase = "answering";
+  setVisualHouse(state.players[playerIndex].house);
+  updateDuelBoard(state.deck[state.index]);
+  updateBuzzerButtons();
+  renderBuzzerAnswers();
+  startBuzzerTimer(BUZZER_SECONDS);
+}
+
+function renderBuzzerAnswers() {
+  const current = state.deck[state.index];
+  elements.buzzerPanel.hidden = true;
+  elements.answers.hidden = false;
+  elements.answers.innerHTML = "";
+  shuffle(current.answers.map((answer, answerIndex) => ({ answer, answerIndex }))).forEach((choice) => {
+    const button = document.createElement("button");
+    button.className = "answer-button";
+    button.type = "button";
+    button.textContent = choice.answer;
+    button.addEventListener("click", () => chooseBuzzerAnswer(button, choice.answerIndex));
+    elements.answers.appendChild(button);
+  });
+  setBuzzerStatus(`${state.players[state.buzzerAnswering].name} antwortet`, `${state.buzzerTimeLeft} Sekunden`);
+}
+
+function startBuzzerTimer(seconds) {
+  stopBuzzerTimer();
+  state.buzzerTimeLeft = seconds;
+  elements.buzzerCountdown.textContent = String(state.buzzerTimeLeft);
+  updateVersusTimer();
+  setBuzzerStatus(`${state.players[state.buzzerAnswering].name} antwortet`, `${state.buzzerTimeLeft} Sekunden`);
+  state.buzzerTimer = window.setInterval(() => {
+    state.buzzerTimeLeft -= 1;
+    elements.buzzerCountdown.textContent = String(Math.max(0, state.buzzerTimeLeft));
+    updateVersusTimer();
+    setBuzzerStatus(`${state.players[state.buzzerAnswering].name} antwortet`, `${state.buzzerTimeLeft} Sekunden`);
+    if (state.buzzerTimeLeft <= 0) {
+      handleBuzzerMiss("Zeit abgelaufen");
+    }
+  }, 1000);
+}
+
+function stopBuzzerTimer() {
+  if (state.buzzerTimer) {
+    window.clearInterval(state.buzzerTimer);
+    state.buzzerTimer = null;
+  }
+  updateVersusTimer();
+}
+
+function chooseBuzzerAnswer(button, answerIndex) {
+  if (state.mode !== "buzzer" || state.buzzerPhase !== "answering") return;
+  const current = state.deck[state.index];
+  const correct = answerIndex === current.correct;
+
+  if (correct) {
+    stopBuzzerTimer();
+    state.answered = true;
+    state.buzzerPhase = "done";
+    awardPoints(pointValue(current.difficulty));
+    button.classList.add("correct");
+    revealBuzzerAnswer(current);
+    setBuzzerStatus("Richtig", `${pointValue(current.difficulty)} Punkte für ${state.players[state.buzzerAnswering].name}.`);
+    refreshScore();
+    elements.progressBar.style.width = `${((state.index + 1) / state.deck.length) * 100}%`;
+    queueNextBuzzerQuestion();
+  } else {
+    button.classList.add("wrong");
+    handleBuzzerMiss("Nicht richtig");
+  }
+}
+
+function handleBuzzerMiss(reason) {
+  if (state.mode !== "buzzer" || state.buzzerPhase !== "answering") return;
+  stopBuzzerTimer();
+  const otherPlayer = state.buzzerAnswering === 0 ? 1 : 0;
+
+  if (!state.buzzerAttempts.includes(otherPlayer)) {
+    state.buzzerPhase = "answering";
+    state.activePlayer = otherPlayer;
+    state.buzzerAnswering = otherPlayer;
+    state.buzzerAttempts.push(otherPlayer);
+    setVisualHouse(state.players[otherPlayer].house);
+    updateDuelBoard(state.deck[state.index]);
+    setBuzzerStatus(reason, `${state.players[otherPlayer].name} darf stehlen.`);
+    updateBuzzerButtons();
+    renderBuzzerAnswers();
+    startBuzzerTimer(BUZZER_SECONDS);
+    return;
+  }
+
+  state.answered = true;
+  state.buzzerPhase = "done";
+  elements.answers.hidden = false;
+  revealBuzzerAnswer(state.deck[state.index]);
+  setBuzzerStatus(reason, `Richtig wäre: ${state.deck[state.index].answers[state.deck[state.index].correct]}.`);
+  elements.progressBar.style.width = `${((state.index + 1) / state.deck.length) * 100}%`;
+  queueNextBuzzerQuestion();
+}
+
+function queueNextBuzzerQuestion() {
+  window.setTimeout(() => {
+    advanceRound();
+  }, 1200);
+}
+
+function revealBuzzerAnswer(current) {
+  [...elements.answers.querySelectorAll("button")].forEach((answerButton) => {
+    answerButton.disabled = true;
+    if (answerButton.textContent === current.answers[current.correct]) answerButton.classList.add("correct");
+  });
+  updateBuzzerButtons();
 }
 
 function renderQuestion() {
@@ -330,7 +538,10 @@ function renderQuestion() {
   const total = state.deck.length;
   state.answered = false;
   updateSharedHeader(total);
+  elements.nextButton.hidden = false;
   updateDuelBoard(current);
+  elements.categoryLabel.hidden = false;
+  elements.difficultyLabel.hidden = false;
   elements.hintButton.hidden = true;
   elements.categoryLabel.textContent = current.category;
   elements.difficultyLabel.textContent = current.difficulty;
@@ -338,6 +549,7 @@ function renderQuestion() {
   elements.nextButton.textContent = state.mode === "duel" ? "Weitergeben" : "Nächste Frage";
 
   elements.answers.innerHTML = "";
+  elements.answers.hidden = false;
   shuffle(current.answers.map((answer, answerIndex) => ({ answer, answerIndex }))).forEach((choice) => {
     const button = document.createElement("button");
     button.className = "answer-button";
@@ -381,7 +593,10 @@ function renderMystery() {
   state.answered = false;
   state.hintIndex = 0;
   updateSharedHeader(total);
+  elements.nextButton.hidden = false;
   updateDuelBoard(current);
+  elements.categoryLabel.hidden = false;
+  elements.difficultyLabel.hidden = false;
   elements.categoryLabel.textContent = current.category;
   elements.difficultyLabel.textContent = `${current.hints.length} Hinweise`;
   elements.nextButton.textContent = "Nächstes Geheimnis";
@@ -393,6 +608,7 @@ function renderMystery() {
   ]);
 
   elements.answers.innerHTML = "";
+  elements.answers.hidden = false;
   choices.forEach((answer) => {
     const button = document.createElement("button");
     button.className = "answer-button";
@@ -440,7 +656,7 @@ function chooseMysteryAnswer(button, answer) {
 }
 
 function awardPoints(points) {
-  if (state.mode === "duel") {
+  if (isTwoPlayerMode()) {
     state.players[state.activePlayer].score += points;
     state.players[state.activePlayer].correct += 1;
     return;
@@ -450,7 +666,7 @@ function awardPoints(points) {
 }
 
 function refreshScore() {
-  if (state.mode === "duel") {
+  if (isTwoPlayerMode()) {
     elements.scoreLabel.textContent = String(state.players[state.activePlayer].score);
     updateDuelBoard(state.deck[state.index]);
   } else {
@@ -471,7 +687,7 @@ function advanceRound() {
 }
 
 function finishRound() {
-  if (state.mode === "duel") {
+  if (isTwoPlayerMode()) {
     const [one, two] = state.players;
     const winner = one.score === two.score ? null : one.score > two.score ? one : two;
     setVisualHouse(winner ? winner.house : one.house);
@@ -538,6 +754,9 @@ elements.difficultyChoices.forEach((button) => {
   });
 });
 
+elements.buzzerOne.addEventListener("click", () => buzz(0));
+elements.buzzerTwo.addEventListener("click", () => buzz(1));
+
 elements.nextButton.addEventListener("click", advanceRound);
 
 elements.hintButton.addEventListener("click", () => {
@@ -548,8 +767,14 @@ elements.hintButton.addEventListener("click", () => {
   }
 });
 
-elements.quitButton.addEventListener("click", () => showScreen("start"));
-elements.playAgainButton.addEventListener("click", () => showScreen("start"));
+elements.quitButton.addEventListener("click", () => {
+  stopBuzzerTimer();
+  showScreen("start");
+});
+elements.playAgainButton.addEventListener("click", () => {
+  stopBuzzerTimer();
+  showScreen("start");
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
