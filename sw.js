@@ -1,4 +1,4 @@
-const CACHE_NAME = "zauberquiz-v34";
+const CACHE_NAME = "zauberquiz-v35-scoped-cache";
 const ASSETS = [
   "./",
   "./index.html",
@@ -22,7 +22,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      Promise.all(keys.filter((key) => key.startsWith("zauberquiz-") && key !== CACHE_NAME).map((key) => caches.delete(key)))
     )
   );
 });
